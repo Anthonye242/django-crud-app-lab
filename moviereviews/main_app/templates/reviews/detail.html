@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+
+{% block title %}Review Details{% endblock %}
+
+{% block content %}
+<section class="review-detail">
+    <h1>{{ review.title }}</h1>
+    <p><strong>Release Date:</strong> {{ review.release_date }}</p>
+    <p><strong>Genre:</strong> {{ review.genre }}</p>
+    <p><strong>Rating:</strong> {{ review.rating }}</p>
+    <p><strong>Review:</strong> {{ review.review_text }}</p>
+    <p><strong>Reviewer:</strong> {{ review.reviewer_name }}</p>
+    <p><strong>Review Date:</strong> {{ review.review_date }}</p>
+    
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p><strong>{{ comment.author }}</strong>: {{ comment.text }}</p>
+                <a href="{% url 'comment-update' comment.id %}" class="btn secondary">Edit</a>
+                <a href="{% url 'comment-delete' comment.id %}" class="btn danger">Delete</a>
+            </li>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </ul>
+    
+    <h2>Add a Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn submit">Add Comment</button>
+    </form>
+</section>
+{% endblock %}

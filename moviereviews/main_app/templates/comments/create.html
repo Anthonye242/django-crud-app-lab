@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block content %}
+<h2>Add Comment</h2>
+<form method="post">
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" required><br><br>
+  <label for="text">Comment:</label>
+  <textarea id="text" name="text" required></textarea><br><br>
+  <button type="submit">Add Comment</button>
+</form>
+{% endblock %}

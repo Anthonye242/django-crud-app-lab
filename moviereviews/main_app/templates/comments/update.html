@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block title %}Update Comment{% endblock %}
+
+{% block content %}
+<section class="comment-form">
+    <h2>Update Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn submit">Update Comment</button>
+    </form>
+</section>
+{% endblock %}

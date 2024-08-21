@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+{% block title %}Delete Review{% endblock %}
+
+{% block content %}
+<section class="review-delete">
+    <h2>Are you sure you want to delete "{{ review.title }}"?</h2>
+    <p><strong>Release Date:</strong> {{ review.release_date }}</p>
+    <p><strong>Genre:</strong> {{ review.genre }}</p>
+    <p><strong>Rating:</strong> {{ review.rating }}</p>
+    <p>{{ review.review_text }}</p>
+    <p><strong>Reviewed by:</strong> {{ review.reviewer_name }}</p>
+    <p><strong>Review Date:</strong> {{ review.review_date }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn danger">Confirm Deletion</button>
+    </form>
+
+    <a href="{% url 'review-detail' review.id %}" class="btn secondary">Cancel</a>
+</section>
+{% endblock %}

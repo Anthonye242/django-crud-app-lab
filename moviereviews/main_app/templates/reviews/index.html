@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+
+{% block title %}All Reviews{% endblock %}
+
+{% block content %}
+<section class="reviews-list">
+    <h2>All Reviews</h2>
+    <div class="movie-list">
+        {% for review in reviews %}
+        <div class="movie-card">
+            <div class="movie-card-content">
+                <h3>{{ review.title }}</h3>
+                <p><strong>Rating:</strong> {{ review.rating }} stars</p>
+                <a href="{% url 'review-detail' review.id %}" class="btn">View Details</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="movie-card">
+            <div class="movie-card-content">
+                <p>No reviews available.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

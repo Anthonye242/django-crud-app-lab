@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+
+{% block title %}Update Review{% endblock %}
+
+{% block content %}
+<section class="review-form">
+    <h2>Update Review</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ review.id }}">
+        
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ review.title }}" required>
+
+        <label for="release_date">Release Date:</label>
+        <input type="date" id="release_date" name="release_date" value="{{ review.release_date }}" required>
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" value="{{ review.genre }}" required>
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" value="{{ review.rating }}" step="0.1" required>
+
+        <label for="review_text">Review:</label>
+        <textarea id="review_text" name="review_text" required>{{ review.review_text }}</textarea>
+
+        <label for="reviewer_name">Your Name:</label>
+        <input type="text" id="reviewer_name" name="reviewer_name" value="{{ review.reviewer_name }}" required>
+
+        <button type="submit" class="btn submit">Update Review</button>
+    </form>
+</section>
+{% endblock %}
